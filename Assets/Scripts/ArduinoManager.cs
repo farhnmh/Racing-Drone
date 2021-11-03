@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class ArduinoManager : MonoBehaviour
 {
-    [Header ("Arduino Attribute")]
+    [Header("Arduino Attribute")]
     [SerializeField] bool isConnected;
     [SerializeField] string portName;
     [SerializeField] int baudRate;
     [SerializeField] SerialPort data_stream;
-    public List<string> joystickData;
-    
+
+    [Header("Joystick Attribute")]
+    public Vector2 leftJoystickDetail;
+    public Vector2 rightJoystickDetail;
+    public List<float> pushButtonDetail;
+
     void Start()
     {
         //deklarasi sumber port dan baud rate yang digunakan oleh Arduino
@@ -21,7 +25,9 @@ public class ArduinoManager : MonoBehaviour
         data_stream.Open();
 
         //menentukan batas jumlah waktu yang digunakan saat proses tidak selesai
-        data_stream.ReadTimeout = 101;
+        //data_stream.ReadTimeout = 101;
+
+        isConnected = true;
     }
 
     void Update()
@@ -34,9 +40,14 @@ public class ArduinoManager : MonoBehaviour
                 string[] datas = data_stream.ReadLine().Split(',');
 
                 //menyiapkan seluruh data yang akan digunakan
-                joystickData[0] = datas[0];
-                joystickData[1] = datas[1];
-                joystickData[2] = datas[2];
+                leftJoystickDetail.x = float.Parse(datas[0]);
+                leftJoystickDetail.y = float.Parse(datas[1]);
+                rightJoystickDetail.x = float.Parse(datas[2]);
+                rightJoystickDetail.y = float.Parse(datas[3]);
+                pushButtonDetail[0] = float.Parse(datas[4]);
+                pushButtonDetail[1] = float.Parse(datas[5]);
+                pushButtonDetail[2] = float.Parse(datas[6]);
+                pushButtonDetail[3] = float.Parse(datas[7]);
             }
             catch (System.Exception)
             {

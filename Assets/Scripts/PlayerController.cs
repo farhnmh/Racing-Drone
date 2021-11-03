@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Propeller Properties")]
+    public ArduinoManager arduino;
+
+    [Header("Drone Properties")]
+    [SerializeField] GameObject drone;
     [SerializeField] List<GameObject> propeller;
     [SerializeField] List<Vector3> propellerRotation;
     [SerializeField] float indexSpeed;
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<KeyCode> pushButton;
     [SerializeField] Vector2 leftJoystickDetail;
     [SerializeField] Vector2 rightJoystickDetail;
+    [SerializeField] List<float> pushButtonDetail;
     [SerializeField] float rotateSpeed;
     [SerializeField] float moveSpeed;
 
@@ -122,30 +126,40 @@ public class PlayerController : MonoBehaviour
         {
             leftJoystickDetail.x = 1;
             indexSpeed = runSpeed;
+
+            this.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(leftJoystick[1]))
         {
             leftJoystickDetail.y = -1;
             indexSpeed = runSpeed;
+
+            this.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(leftJoystick[2]))
         {
             leftJoystickDetail.x = -1;
             indexSpeed = runSpeed;
+
+            this.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(leftJoystick[3]))
         {
             leftJoystickDetail.y = 1;
             indexSpeed = runSpeed;
+
+            this.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(rightJoystick[0]))
         {
             rightJoystickDetail.x = 1;
             indexSpeed = runSpeed;
+
+            this.transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(rightJoystick[1]))
@@ -158,6 +172,8 @@ public class PlayerController : MonoBehaviour
         {
             rightJoystickDetail.x = -1;
             indexSpeed = runSpeed;
+
+            this.transform.Translate(-Vector3.up * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(rightJoystick[3]))
@@ -225,10 +241,11 @@ public class PlayerController : MonoBehaviour
                 newRotation.y -= rotateSpeed * Time.deltaTime;
         }
 
-        newPosition = new Vector3(leftJoystickDetail.y, rightJoystickDetail.x, leftJoystickDetail.x);
-        this.transform.position += newPosition * moveSpeed * Time.deltaTime;
+        //newPosition = new Vector3(leftJoystickDetail.y, rightJoystickDetail.x, leftJoystickDetail.x);
+        //this.transform.position += newPosition * moveSpeed * Time.deltaTime;
 
-        this.transform.localRotation = Quaternion.Euler(newRotation.x, newRotation.y, newRotation.z);
+        drone.transform.localRotation = Quaternion.Euler(newRotation.x, drone.transform.rotation.y, newRotation.z);
+        this.transform.localRotation = Quaternion.Euler(this.transform.rotation.x, newRotation.y, this.transform.rotation.z);
     }
 
     IEnumerator LEDBlinking()
