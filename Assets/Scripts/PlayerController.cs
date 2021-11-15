@@ -105,19 +105,6 @@ public class PlayerController : MonoBehaviour
             else if (isPaused && isRun)
                 isPaused = false;
         }
-
-        //landing
-        if (Input.GetKeyDown(pushButton[1]))
-        {
-
-        }
-
-        //stop engine
-        if (Input.GetKeyDown(pushButton[3]))
-        {
-            led.transform.GetComponent<MeshRenderer>().material = ledMaterial[0];
-            isRun = false;
-        }
     }
 
     public void MovementController()
