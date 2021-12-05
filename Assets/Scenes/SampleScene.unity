@@ -7093,6 +7093,7 @@ MonoBehaviour:
   yellow: {fileID: 2100000, guid: ea1c5ad980d677449b14fec492ab4ebd, type: 2}
   waitingSeconds: 1
   indexMaterial: 0
+  isGrounded: 0
   isOn: 0
 --- !u!1 &1625103395
 GameObject:
@@ -7249,7 +7250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isConnected: 0
-  portName: COM6
+  portName: COM7
   baudRate: 19200
   sourcePortText: {fileID: 419811881}
   detailDataText: {fileID: 1360741154}
