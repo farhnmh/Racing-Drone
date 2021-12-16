@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Drone
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

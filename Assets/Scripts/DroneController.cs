@@ -5,6 +5,7 @@ using UnityEngine;
 public class DroneController : MonoBehaviour
 {
     [Header ("Another Script")]
+    [SerializeField] GameManager game;
     [SerializeField] ArduinoManager arduino;
     [SerializeField] GameObject drone;
 
@@ -110,15 +111,20 @@ public class DroneController : MonoBehaviour
         StartCoroutine(LEDBlinking());
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Ground")
+        Debug.Log(other.gameObject.tag);
+
+        if (other.gameObject.tag == "Ground")
             isGrounded = true;
+
+        if (other.gameObject.tag == "Checkpoint")
+            game.indexCheckpoint = int.Parse(other.gameObject.name) + 1;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Ground")
             isGrounded = false;
     }
 }
