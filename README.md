@@ -1,6 +1,6 @@
 # Racing Drone With Custom Controller
 <img src="https://user-images.githubusercontent.com/57122816/165276972-48a882c4-51e4-4762-9844-a0a021b0ec55.png" height="300">
-<img src="https://user-images.githubusercontent.com/57122816/165277622-e41a21b1-838d-402a-be44-ce752581220b.png" height="300">
+<img src="https://user-images.githubusercontent.com/57122816/165277622-e41a21b1-838d-402a-be44-ce752581220b.png" height="150">
 
 The Racing Drones in this project use physical controls similar to those of the PlayStation controller. This controller uses a mini-controller in the form of an Arduino Uno, with several combinations of joystick modules and buttons. Some of these modules are combined in one custom casing.
 
