@@ -13,7 +13,8 @@ UI Assets Made With [Figma](https://www.figma.com/)<br>
 3D Assets Got From Free Assets
 
 ## Requirement
-![image](https://user-images.githubusercontent.com/57122816/165276472-45ce16f7-5939-4757-b487-51736795dee1.png)
+<img src="https://user-images.githubusercontent.com/57122816/165276472-45ce16f7-5939-4757-b487-51736795dee1.png" height="300"><br>
+
 There are several components needed in the development of this project:
 - Breadboards
 - Arduino Uno
